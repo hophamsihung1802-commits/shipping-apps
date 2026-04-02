@@ -24,10 +24,14 @@ const SALT_ROUNDS  = 10;
 // Middleware toàn cục
 // -------------------------------------------------------
 app.use(cors({
-  origin: '*', // Cho phép mọi origin (production nên giới hạn)
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// 👇 THÊM DÒNG NÀY (rất quan trọng)
+app.options('*', cors());
+
 app.use(express.json());
 
 // Serve frontend tĩnh từ thư mục ../frontend
