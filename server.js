@@ -295,7 +295,7 @@ app.get('/api/admin/logs', authenticate, requireAdmin, (req, res) => {
 // ------------------------------------------------------
 // Route fallback
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
 // -------------------------------------------------------
