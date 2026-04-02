@@ -24,14 +24,10 @@ const SALT_ROUNDS  = 10;
 // Middleware toàn cục
 // -------------------------------------------------------
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  origin: '*', // Cho phép mọi origin (production nên giới hạn)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-// 👇 THÊM DÒNG NÀY (rất quan trọng)
-app.options('*', cors());
-
 app.use(express.json());
 
 // Serve frontend tĩnh từ thư mục ../frontend
@@ -299,7 +295,7 @@ app.get('/api/admin/logs', authenticate, requireAdmin, (req, res) => {
 // ------------------------------------------------------
 // Route fallback
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // -------------------------------------------------------
