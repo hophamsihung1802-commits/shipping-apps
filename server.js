@@ -33,6 +33,9 @@ app.use(express.json());
 // Serve frontend tĩnh từ thư mục ../frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
+// 👇 Serve images (QUAN TRỌNG)
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 // -------------------------------------------------------
 // ROUTE: POST /api/login
 // Đăng nhập, trả về JWT token
